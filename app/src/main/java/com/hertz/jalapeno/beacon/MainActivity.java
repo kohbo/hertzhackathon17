@@ -1,8 +1,10 @@
 package com.hertz.jalapeno.beacon;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchGuide(View view){
-        Intent intent = new Intent(this, FeatureView.class);
+        Intent intent = new Intent(this, GuideActivity.class);
         startActivity(intent);
     }
 
     public void launchAR(View view){
-        Intent intent = new Intent(this, GuideActivity.class);
+        Intent intent = new Intent(this, FeatureView.class);
         startActivity(intent);
     }
 }

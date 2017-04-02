@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.estimote.sdk.SystemRequirementsChecker;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.common.camera.CameraSettings;
 
@@ -187,6 +186,5 @@ public class FeatureView extends AbstractArchitectCamActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SystemRequirementsChecker.checkWithDefaultDialogs(this);
     }
 }
