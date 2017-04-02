@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.hertz.jalapeno.beacon.R;
+import com.example.mudshark426.eaglevision.R;
 
 public class MainActivity extends AppCompatActivity {
 

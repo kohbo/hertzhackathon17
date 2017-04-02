@@ -7,7 +7,7 @@ import android.location.LocationListener;
 import android.widget.Toast;
 
 
-import com.hertz.jalapeno.beacon.R;
+import com.example.mudshark426.eaglevision.R;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.common.camera.CameraSettings;
 

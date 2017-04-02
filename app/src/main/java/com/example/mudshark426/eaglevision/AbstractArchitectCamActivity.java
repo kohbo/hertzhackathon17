@@ -90,7 +90,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		}*/
 
 		/* set AR-view for life-cycle notifications etc. */
-        this.architectView = (ArchitectView)this.findViewById(com.hertz.jalapeno.beacon.R.id.architectView);
+        this.architectView = (ArchitectView)this.findViewById(com.example.mudshark426.eaglevision.R.id.architectView);
 
 		/* pass SDK key if you have one, this one is only valid for this package identifier and must not be used somewhere else */
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();

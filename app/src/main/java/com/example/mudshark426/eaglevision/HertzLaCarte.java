@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.hertz.jalapeno.beacon.R;
+import com.example.mudshark426.eaglevision.R;
 
 public class HertzLaCarte extends AppCompatActivity {
 

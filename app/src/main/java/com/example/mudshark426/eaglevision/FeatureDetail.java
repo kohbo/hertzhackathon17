@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hertz.jalapeno.beacon.R;
+import com.example.mudshark426.eaglevision.R;
 
 public class FeatureDetail extends AppCompatActivity {
 

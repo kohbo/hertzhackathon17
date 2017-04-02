@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.hertz.jalapeno.beacon.R;
+import com.example.mudshark426.eaglevision.R;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 
@@ -69,7 +69,7 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.hertz.jalapeno.beacon.R.layout.activity_fullscreen);
+        setContentView(com.example.mudshark426.eaglevision.R.layout.activity_fullscreen);
 
         //Check for permissions
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
