@@ -1,9 +1,12 @@
 package com.example.mudshark426.eaglevision;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.mudshark426.eaglevision.R;
@@ -173,7 +176,29 @@ public class HertzLaCarte extends AppCompatActivity {
 
         });
 
+
+        Button aLaC = (Button)findViewById(R.id.aLaCarte);
+
+        aLaC.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent intent = new Intent();
+
+                intent.setAction(Intent.ACTION_VIEW);
+
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+                intent.setData(Uri.parse("https://www.google.com/maps/dir/1861+Oakes+Blvd,+Naples,+FL+34119/Hertz+Corporate+Headquarters,+Williams+Road,+Estero,+FL/@26.3474939,-81.8429092,12z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x88db1c629182f9a5:0x766260ca0b1b7c34!2m2!1d-81.735935!2d26.261895!1m5!1m1!1s0x88db17ac991bbe01:0xb8c5d4b5ac568c40!2m2!1d-81.8108859!2d26.4195394"));
+
+                startActivity(intent);
+
+            }
+
+        });
+
     }
+
 }
 
 
