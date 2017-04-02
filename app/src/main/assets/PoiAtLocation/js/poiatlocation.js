@@ -59,9 +59,9 @@ var World = {
 			// creates a poi object with a random location near the user's location
 			var poiData = {
 				"id": 1,
-				"longitude": (lon + (Math.random() / 5 - 0.1)),
-				"latitude": (lat + (Math.random() / 5 - 0.1)),
-				"altitude": 100.0
+				"longitude": -81.810126,
+				"latitude": 26.419489,
+				"altitude": 10.0
 			};
 
 			World.loadPoisFromJsonData(poiData);
