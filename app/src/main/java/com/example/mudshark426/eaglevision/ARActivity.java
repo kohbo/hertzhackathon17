@@ -1,19 +1,20 @@
 package com.example.mudshark426.eaglevision;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
+import android.app.ActionBar;
+
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -26,14 +27,12 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     private final String TAG = "ARActivity";
 
 
-    private LocationManager locationManager;
-    private ArchitectView architectView;
 
+    private ArchitectView architectView;
+ActionBar actionBar;
     protected boolean isLoading = false;
     private SlidingUpPanelLayout slidingLayout;
-    private Button btnShow;
-    private Button btnHide;
-    private TextView textView;
+
 
     private String ARkey() {
         //String key = "pPRPYEu94bqvCrDihHUq42Dob1CNySsICF9gGbnEmxah3jGTy7l1UctEkyj0CFS7KgrHKSYq9iihedyj7dEjKVObozE01QQlbOh1bPklkN5huNylkNS2Ec0NGzYP8fmWJXkfSytsE628OMIJe6sr+XAS6pRbtVaDn2OloyWD1wFTYWx0ZWRfX40YS1TiJtIPOmVv7e1qa1MeNyARYukrmEifZjIkY9GDggJ+jocqxrZjnnwIyrKVbFEF+Eg97XLbT0e4VT45V/NEjRJTQAsCq1YvpCk2N/Z1znmVZM/VHwF7uBU6/RgFkRq7cUGnMImPlQ5fACMzCYlpxQm/XTywLPDrzDTVzkKw+dBSnTeWB1ZAdfeFC/YttlLxOfwQqZmEyYS64DNHzYvsw6GyMwCFPa6RZ8fObcn+a3bk5JcBtqSLJPgjJ0MxiZiWRg2fSOiyR42/uhy/MpvD1+BYpUkGR/cryK5KKSzffMBlLHGwevKlhO2L5//+M+qG57AavXNIPjhSFe9qhy1WURl6Nj274xUL0C3hGQ4zd/7GMl59CxboiJuZt3equpreeWxCHtBym61Hsz9dxr1hQtoXd7xq40KN/zHMSk7/hVMeFXg5Co3cn7YmA7G6P5YoedzeTqb8RiSEEkuj9p0gScPXZGT/XWbj6yiIr2GAeYmEODf4tdo=";
@@ -76,12 +75,19 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.mudshark426.eaglevision.R.layout.activity_fullscreen);
+        actionBar = getActionBar();
+
+        slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
+
+        //some "demo" event
+        slidingLayout.setPanelSlideListener(onSlideListener());
+
+        slidingLayout.setOnClickListener(onShowListener());
 
 
-        //get LocationManager
-//        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-//        Log.d(TAG, "Registering for location updates.");
-//        locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 1000, 5, new LocationProvider());
+
+
+
 
 
         //init AR view
@@ -89,19 +95,43 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
         config.setLicenseKey(ARkey());
         this.architectView.onCreate(config);
-       btnShow = (Button)findViewById(R.id.btn_show);
-        btnHide = (Button)findViewById(R.id.btn_hide);
+
      //   textView = (TextView)findViewById(R.id.text);
         slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
 
         //some "demo" event
         slidingLayout.setPanelSlideListener(onSlideListener());
-        btnHide.setOnClickListener(onHideListener());
-        btnShow.setOnClickListener(onShowListener());
+      slidingLayout.setOnClickListener(onShowListener());
 
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+
+            case R.id.Gold_Choice:
+
+                if(slidingLayout.isShown()){
+                    slidingLayout.setVisibility(View.INVISIBLE);
+                }else {
+                    slidingLayout.setVisibility(View.VISIBLE);
+
+                }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 /*
 
     */
@@ -122,20 +152,7 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     }
 
 
-/*** Hide sliding layout when click button
-     * @return
-     */
 
-    private View.OnClickListener onHideListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //hide sliding layout
-                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-               // btnShow.setVisibility(View.VISIBLE);
-            }
-        };
-    }
 
     private SlidingUpPanelLayout.PanelSlideListener onSlideListener() {
         return new SlidingUpPanelLayout.PanelSlideListener() {

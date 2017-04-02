@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -58,36 +59,78 @@
         </RelativeLayout>
 
         <!-- SLIDING LAYOUT -->
-        <LinearLayout
-            android:id="@+id/dragView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:clickable="true"
-            android:focusable="false"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+       <LinearLayout
+           android:id="@+id/dragView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="#ffffff"
+           android:clickable="true"
+           android:focusable="false"
+           android:orientation="vertical">
 
 
+           <ImageButton
+               android:id="@+id/car_nine"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_nine" />
 
-                <Button
-                    android:id="@+id/btn_hide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|right"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="@string/hide"
-                    android:textSize="14sp" />
+           <ImageButton
+               android:id="@+id/car_eight"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_eight" />
 
+           <ImageButton
+               android:id="@+id/car_seven"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_seven" />
 
-                </LinearLayout>
+           <ImageButton
+               android:id="@+id/car_six"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_six" />
 
+           <ImageButton
+               android:id="@+id/car_five"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_five" />
 
-        </LinearLayout>
+           <ImageButton
+               android:id="@+id/car_four"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_four" />
+
+           <ImageButton
+               android:id="@+id/car_three"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_three" />
+
+           <ImageButton
+               android:id="@+id/car_two"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_two" />
+
+           <ImageButton
+               android:id="@+id/car_one"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/car_one" />
+       </LinearLayout>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 </FrameLayout>
