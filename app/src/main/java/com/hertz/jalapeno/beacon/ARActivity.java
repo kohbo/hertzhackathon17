@@ -41,7 +41,7 @@ public abstract class ARActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         architectView.onPostCreate();
         try {
-            architectView.load("FeatureView/index.html");
+            architectView.load(getAssetPath());
             architectView.setLocation(26.419498, -81.810104, 10.0);
         } catch (IOException e) {
             Log.d(TAG, "Unable to load html file.");
