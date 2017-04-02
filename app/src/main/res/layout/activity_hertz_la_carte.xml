@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_hertz_la_carte"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hertz.jalapeno.beacon.HertzLaCarte">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/hertz"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:id="@+id/imageView"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/BoosterSeat"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginTop="63dp"
+        android:id="@+id/boosterSeat"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/Sirius"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/infantChildSeat"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/siriusRadio"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/Tablet"
+        android:layout_above="@+id/childSeat"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_marginEnd="37dp"
+        android:id="@+id/neverLost"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ski"
+        android:id="@+id/skiPackage"
+        android:layout_alignTop="@+id/childSeat"
+        android:layout_alignStart="@+id/neverLost"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ChildSeat"
+        android:layout_marginTop="62dp"
+        android:id="@+id/childSeat"
+        android:layout_below="@+id/boosterSeat"
+        android:layout_alignStart="@+id/boosterSeat"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/InfantChildSeat"
+        android:id="@+id/infantChildSeat"
+        android:layout_below="@+id/childSeat"
+        android:layout_alignStart="@+id/childSeat"
+        android:layout_marginTop="57dp"/>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/TravelTab"
+        android:layout_alignBottom="@+id/infantChildSeat"
+        android:layout_alignStart="@+id/skiPackage"
+        android:id="@+id/travelTablet"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/checkBooster"
+        android:layout_alignBottom="@+id/boosterSeat"
+        android:layout_alignParentStart="true"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/childSeat"
+        android:layout_alignParentStart="true"
+        android:id="@+id/checkChildSeat"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/infantChildSeat"
+        android:layout_alignParentStart="true"
+        android:id="@+id/checkInfant"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/siriusRadio"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/checkSirius"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_above="@+id/childSeat"
+        android:layout_toStartOf="@+id/neverLost"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/checkLost"
+        android:layout_alignTop="@+id/checkBooster"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/skiPackage"
+        android:layout_alignEnd="@+id/checkLost"
+        android:id="@+id/checkSki"/>
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/travelTablet"
+        android:layout_alignEnd="@+id/checkSki"
+        android:id="@+id/checkTravelTab"/>
+
+    <Button
+        android:text="Button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/siriusRadio"
+        android:layout_toStartOf="@+id/travelTablet"
+        android:id="@+id/button"/>
+</RelativeLayout>
