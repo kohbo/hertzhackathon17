@@ -1,32 +1,21 @@
 package com.hertz.jalapeno.beacon;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.SensorManager;
 import android.location.LocationListener;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
 import android.widget.Toast;
 
 
-import com.estimote.sdk.BeaconManager;
-import com.estimote.sdk.SystemRequirementsChecker;
-import com.hertz.jalapeno.beacon.AbstractArchitectCamActivity;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.common.camera.CameraSettings;
-
-import java.io.File;
-import java.io.FileOutputStream;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenActivity extends AbstractArchitectCamActivity {
+public class GuideActivity extends AbstractArchitectCamActivity {
 
-    private ArchitectView architectView;
     private long lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
     private static final int WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 3;
     protected Bitmap screenCapture = null;
@@ -62,9 +51,9 @@ public class FullscreenActivity extends AbstractArchitectCamActivity {
             @Override
             public void onCompassAccuracyChanged( int accuracy ) {
 				/* UNRELIABLE = 0, LOW = 1, MEDIUM = 2, HIGH = 3 */
-                if ( accuracy < SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM && FullscreenActivity.this != null && !FullscreenActivity.this.isFinishing() && System.currentTimeMillis() - FullscreenActivity.this.lastCalibrationToastShownTimeMillis > 5 * 1000) {
-                    Toast.makeText( FullscreenActivity.this, R.string.compass_accuracy_low, Toast.LENGTH_LONG ).show();
-                    FullscreenActivity.this.lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
+                if ( accuracy < SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM && GuideActivity.this != null && !GuideActivity.this.isFinishing() && System.currentTimeMillis() - GuideActivity.this.lastCalibrationToastShownTimeMillis > 5 * 1000) {
+                    Toast.makeText( GuideActivity.this, R.string.compass_accuracy_low, Toast.LENGTH_LONG ).show();
+                    GuideActivity.this.lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
                 }
             }
         };
@@ -81,31 +70,7 @@ public class FullscreenActivity extends AbstractArchitectCamActivity {
     }
 
 
-  /*  @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
 
-        architectView.onPostCreate();
-//
-//        try {
-//            this.architectView.load("file:///android_asset/06_PointOfInterest_3_MultiplePois/index.html");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        architectView.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        architectView.onDestroy();
-    }
-*/
 
     @Override
     public String getARchitectWorldPath() {
@@ -134,63 +99,26 @@ public class FullscreenActivity extends AbstractArchitectCamActivity {
     public int getArchitectViewId() {
         return R.id.architectView;
     }
+
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE: {
                 if ( grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ) {
-                    this.saveScreenCaptureToExternalStorage(FullscreenActivity.this.screenCapture);
+
                 } else {
                     Toast.makeText(this, "Please allow access to external storage, otherwise the screen capture can not be saved.", Toast.LENGTH_SHORT).show();
                 }
             }
         }
     }
-    protected void saveScreenCaptureToExternalStorage(Bitmap screenCapture) {
-        if ( screenCapture != null ) {
-            // store screenCapture into external cache directory
-            final File screenCaptureFile = new File(Environment.getExternalStorageDirectory().toString(), "screenCapture_" + System.currentTimeMillis() + ".jpg");
 
-            // 1. Save bitmap to file & compress to jpeg. You may use PNG too
-            try {
 
-                final FileOutputStream out = new FileOutputStream(screenCaptureFile);
-                screenCapture.compress(Bitmap.CompressFormat.JPEG, 90, out);
-                out.flush();
-                out.close();
 
-                // 2. create send intent
-                final Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("image/jpg");
-                share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(screenCaptureFile));
 
-                // 3. launch intent-chooser
-                final String chooserTitle = "Share Snaphot";
-                FullscreenActivity.this.startActivity(Intent.createChooser(share, chooserTitle));
 
-            } catch (final Exception e) {
-                // should not occur when all permissions are set
-                FullscreenActivity.this.runOnUiThread(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        // show toast message in case something went wrong
-                        Toast.makeText(FullscreenActivity.this, "Unexpected error, " + e, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        }
-    }
 
-   /* @Override
-    protected void onPause() {
-        super.onPause();
-        architectView.onPause();
-    }*/
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SystemRequirementsChecker.checkWithDefaultDialogs(this);
-    }
 }

@@ -52,6 +52,7 @@ public class LocationProvider implements ArchitectViewHolderInterface.ILocationP
 		this.networkProviderEnabled = this.locationManager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 	}
 
+
 	@Override
 	public void onPause() {
 		if ( this.locationListener != null && this.locationManager != null && (this.gpsProviderEnabled || this.networkProviderEnabled) ) {
@@ -67,7 +68,7 @@ public class LocationProvider implements ArchitectViewHolderInterface.ILocationP
 			this.gpsProviderEnabled = this.locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER );
 			this.networkProviderEnabled = this.locationManager.isProviderEnabled( LocationManager.NETWORK_PROVIDER );
 
-			/** is GPS provider enabled? */
+			//* is GPS provider enabled?
 			if ( this.gpsProviderEnabled ) {
 				final Location lastKnownGPSLocation = this.locationManager.getLastKnownLocation( LocationManager.GPS_PROVIDER );
 				if ( lastKnownGPSLocation != null && lastKnownGPSLocation.getTime() > System.currentTimeMillis() - LOCATION_OUTDATED_WHEN_OLDER_MS ) {
@@ -78,7 +79,7 @@ public class LocationProvider implements ArchitectViewHolderInterface.ILocationP
 				}
 			}
 
-			/** is Network / WiFi positioning provider available? */
+		//	* is Network / WiFi positioning provider available?
 			if ( this.networkProviderEnabled ) {
 				final Location lastKnownNWLocation = this.locationManager.getLastKnownLocation( LocationManager.NETWORK_PROVIDER );
 				if ( lastKnownNWLocation != null && lastKnownNWLocation.getTime() > System.currentTimeMillis() - LOCATION_OUTDATED_WHEN_OLDER_MS ) {
@@ -89,10 +90,10 @@ public class LocationProvider implements ArchitectViewHolderInterface.ILocationP
 				}
 			}
 
-			/** user didn't check a single positioning in the location settings, recommended: handle this event properly in your app, e.g. forward user directly to location-settings, new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS ) */
+		//	* user didn't check a single positioning in the location settings, recommended: handle this event properly in your app, e.g. forward user directly to location-settings, new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS )
 			if ( !this.gpsProviderEnabled || !this.networkProviderEnabled ) {
 				Toast.makeText( this.context, "Please enable GPS and Network positioning in your Settings ", Toast.LENGTH_LONG ).show();
 			}
 		}
-	}
+}
 }

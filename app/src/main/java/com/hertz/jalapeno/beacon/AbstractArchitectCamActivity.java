@@ -9,30 +9,34 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.*;
+import android.Manifest;
 import android.annotation.SuppressLint;
+
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
+
 import android.location.LocationListener;
 import android.opengl.GLES20;
 import android.os.Bundle;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
 
-import com.estimote.sdk.Beacon;
-import com.estimote.sdk.BeaconManager;
-import com.estimote.sdk.Region;
+
+
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.services.camera.CameraLifecycleListener;
-import com.wikitude.common.camera.CameraSettings;
 
-import static com.estimote.sdk.BeaconManager.*;
+import com.wikitude.common.camera.CameraSettings;
 
 
 /**
@@ -40,8 +44,7 @@ import static com.estimote.sdk.BeaconManager.*;
  * Feel free to extend from this activity when setting up your own AR-Activity
  *
  */
-public abstract class AbstractArchitectCamActivity extends Activity implements ArchitectViewHolderInterface {
-    public BeaconManager beaconManager;
+public abstract class AbstractArchitectCamActivity extends Activity implements ArchitectViewHolderInterface{
 
     /**
      * holds the Wikitude SDK AR-View, this is where camera, markers, compass, 3D models etc. are rendered
@@ -78,7 +81,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
      */
     protected ArchitectView.ArchitectWorldLoadedListener worldLoadedListener;
 
-    protected JSONArray poiData;
+    protected Location poiData;
 
     protected boolean isLoading = false;
 
@@ -93,7 +96,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 //
 //		/* set samples content view */
         this.setContentView( this.getContentViewId() );
-//
+
 //		this.setTitle( this.getActivityTitle() );
 
 		/*
@@ -107,7 +110,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		        WebView.setWebContentsDebuggingEnabled(true);
 		    }
 		}*/
-        beaconManager = new BeaconManager(getApplicationContext());
+
 		/* set AR-view for life-cycle notifications etc. */
         this.architectView = (ArchitectView)this.findViewById(R.id.architectView);
 
@@ -148,6 +151,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		}*/
 
         if (hasGeo()) {
+
             // listener passed over to locationProvider, any location update is handled here
             this.locationListener = new LocationListener() {
 
@@ -162,7 +166,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
                 @Override
                 public void onProviderDisabled( String provider ) {
                 }
-
                 @Override
                 public void onLocationChanged( final Location location ) {
                     // forward location updates fired by LocationProvider to architectView, you can set lat/lon from any location-strategy
@@ -173,6 +176,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
                             // check if location has altitude at certain accuracy level & call right architect method (the one with altitude information)
                             if ( location.hasAltitude() && location.hasAccuracy() && location.getAccuracy()<7) {
                                 AbstractArchitectCamActivity.this.architectView.setLocation( location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy() );
+                                Log.v("SDDSDSS","SET Location is on ");
                             } else {
                                 AbstractArchitectCamActivity.this.architectView.setLocation( location.getLatitude(), location.getLongitude(), location.hasAccuracy() ? location.getAccuracy() : 1000 );
                             }
@@ -183,57 +187,23 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
             // locationProvider used to fetch user position
             this.locationProvider = getLocationProvider( this.locationListener );
+
         } else {
             this.locationProvider = null;
             this.locationListener = null;
         }
 
 
-        // this is were we left off:
-        beaconManager = new BeaconManager(getApplicationContext());
-// add this below:
-        beaconManager.connect(new ServiceReadyCallback() {
-            @Override
-            public void onServiceReady() {
-                beaconManager.startMonitoring(new Region(
-                        "monitored region",
-                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),
-                        22504, 48827));
-            }});
-        // add this below:
-        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
-            @Override
-            public void onEnteredRegion(Region region, List<Beacon> list) {
-                showNotification(
-                        "Your gate closes in 47 minutes.",
-                        "Current security wait time is 15 minutes, "
-                                + "and it's a 5 minute walk from security to the gate. "
-                                + "Looks like you've got plenty of time!");
-            }
-            @Override
-            public void onExitedRegion(Region region) {
-                // could add an "exit" notification too if you want (-:
-            }
-        });
+
         }
 
-    public void showNotification(String title, String message) {
-        Intent notifyIntent = new Intent(this, AbstractArchitectCamActivity.class);
-        notifyIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivities(this, 0,
-                new Intent[] { notifyIntent }, PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new Notification.Builder(this)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
-                .build();
-        notification.defaults |= Notification.DEFAULT_SOUND;
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, notification);
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        // listener passed over to locationProvider, any location update is handled here
+
     }
+
     protected abstract CameraSettings.CameraPosition getCameraPosition();
 
     private int getFeatures() {
@@ -269,9 +239,10 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 
             try {
-              // this.architectView.load("file:///android_asset/SinglePoi/index.html");
+               this.architectView.load("file:///android_asset/06_PointOfInterest_2_PoiWithLabel/index.html");
               //  this.architectView.load("file:///android_asset/3dModels_3dModelAtGeoLocation/index.html");
-            this.architectView.load("file///android_asset/3dModelO/index.html");
+         //   this.architectView.load("file///android_asset/PoiAtLocation/index.html");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -319,7 +290,16 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
     }
 
     @Override
+    protected void onStart() {
+
+        super.onStart();
+
+    }
+
+    @Override
     protected void onStop() {
+
+
         super.onStop();
     }
 
@@ -363,6 +343,21 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 	@Override
 	public abstract int getContentViewId();*/
 
+    @Override
+    public String getARchitectWorldPath() {
+        return null;
+    }
+
+    @Override
+    public ArchitectView.ArchitectUrlListener getUrlListener() {
+        return null;
+    }
+
+    @Override
+    public int getContentViewId() {
+        return 0;
+    }
+
     /**
      * @return Wikitude SDK license key, checkout www.wikitude.com for details
      */
@@ -388,6 +383,11 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
     @Override
     public abstract ArchitectView.SensorAccuracyChangeListener getSensorAccuracyListener();
 
+    @Override
+    public float getInitialCullingDistanceMeters() {
+        return 0;
+    }
+
     /**
      * @return Implementation of ArchitectWorldLoadedListener. That way you know when a AR world is finished loading or when it failed to load.
      */
@@ -403,7 +403,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
         return extensions != null && extensions.contains( "GL_OES_EGL_image_external" );
     }
 
-    protected void injectData() {
+  /*  protected void injectData() {
         if (!isLoading) {
             final Thread t = new Thread(new Runnable() {
 
@@ -433,7 +433,9 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
                     if (lastKnownLocaton!=null && !isFinishing()) {
                         // TODO: you may replace this dummy implementation and instead load POI information e.g. from your database
-                        poiData = getPoiInformation(lastKnownLocaton, 20);
+                        poiData.setLatitude(26.419474);
+                        poiData.setLongitude(-81.810043);
+                        poiData.setAltitude(100);
                         callJavaScript("World.loadPoisFromJsonData", new String[] { poiData.toString() });
                     }
 
@@ -443,12 +445,13 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
             t.start();
         }
     }
-
+*/
     /**
      * call JacaScript in architectView
      * @param methodName
      * @param arguments
      */
+/*
     private void callJavaScript(final String methodName, final String[] arguments) {
         final StringBuilder argumentsString = new StringBuilder("");
         for (int i= 0; i<arguments.length; i++) {
@@ -463,6 +466,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
             this.architectView.callJavascript(js);
         }
     }
+*/
 
     /**
      * loads poiInformation and returns them as JSONArray. Ensure attributeNames of JSON POIs are well known in JavaScript, so you can parse them easily
@@ -470,7 +474,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
      * @param numberOfPlaces number of places to load (at max)
      * @return POI information in JSONArray
      */
-    public static JSONArray getPoiInformation(final Location userLocation, final int numberOfPlaces) {
+/*    public static JSONArray getPoiInformation(final Location userLocation, final int numberOfPlaces) {
 
         if (userLocation==null) {
             return null;
@@ -491,7 +495,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
             poiInformation.put(ATTR_ID, String.valueOf(i));
             poiInformation.put(ATTR_NAME, "POI#" + i);
             poiInformation.put(ATTR_DESCRIPTION, "This is the description of POI#" + i);
-            double[] poiLocationLatLon = getRandomLatLonNearby(userLocation.getLatitude(), userLocation.getLongitude());
+            double[] poiLocationLatLon = {26.419474,-81.810043};
             poiInformation.put(ATTR_LATITUDE, String.valueOf(poiLocationLatLon[0]));
             poiInformation.put(ATTR_LONGITUDE, String.valueOf(poiLocationLatLon[1]));
             final float UNKNOWN_ALTITUDE = -32768f;  // equals "AR.CONST.UNKNOWN_ALTITUDE" in JavaScript (compare AR.GeoLocation specification)
@@ -501,7 +505,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
         }
 
         return pois;
-    }
+    }*/
 
     /**
      * helper for creation of dummy places.
@@ -509,7 +513,10 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
      * @param lon center longitude
      * @return lat/lon values in given position's vicinity
      */
-    private static double[] getRandomLatLonNearby(final double lat, final double lon) {
+    /*private static double[] getRandomLatLonNearby(final double lat, final double lon) {
         return new double[] { lat + Math.random()/5-0.1 , lon + Math.random()/5-0.1};
-    }
+    }*/
+
+
+
 }

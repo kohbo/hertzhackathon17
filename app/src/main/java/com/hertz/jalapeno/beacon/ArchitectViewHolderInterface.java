@@ -65,14 +65,14 @@ public interface ArchitectViewHolderInterface {
 	 */
 	public static interface ILocationProvider {
 
-		/**
-		 * Call when host-activity is resumed (usually within systems life-cycle method)
-		 */
+//		*
+//		 * Call when host-activity is resumed (usually within systems life-cycle method)
+//
 		public void onResume();
 
-		/**
-		 * Call when host-activity is paused (usually within systems life-cycle method)
-		 */
+//		*
+//		 * Call when host-activity is paused (usually within systems life-cycle method)
+//
 		public void onPause();
 
 	}
