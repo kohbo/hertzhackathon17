@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchAR(View view){
-        //Intent intent = new Intent(this, GuideActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, GuideActivity.class);
+        startActivity(intent);
     }
 }
