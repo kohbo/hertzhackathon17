@@ -22,13 +22,13 @@ public class LocationProvider implements ArchitectViewHolderInterface.ILocationP
 	private final LocationManager	locationManager;
 
 	/** location updates should fire approximately every second */
-	private static final int		LOCATION_UPDATE_MIN_TIME_GPS	= 1000;
+	private static final int		LOCATION_UPDATE_MIN_TIME_GPS	= 500;
 
 	/** location updates should fire, even if last signal is same than current one (0m distance to last location is OK) */
 	private static final int		LOCATION_UPDATE_DISTANCE_GPS	= 0;
 
 	/** location updates should fire approximately every second */
-	private static final int		LOCATION_UPDATE_MIN_TIME_NW		= 1000;
+	private static final int		LOCATION_UPDATE_MIN_TIME_NW		= 500;
 
 	/** location updates should fire, even if last signal is same than current one (0m distance to last location is OK) */
 	private static final int		LOCATION_UPDATE_DISTANCE_NW		= 0;

@@ -125,7 +125,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			Toast.makeText(getApplicationContext(), "can't create Architect View", Toast.LENGTH_SHORT).show();
 			Log.e(this.getClass().getName(), "Exception in ArchitectView.onCreate()", rex);
 		}
-
+Log.v("DODODO","Activity "+getParentActivityIntent());
         // set world loaded listener if implemented
         this.worldLoadedListener = this.getWorldLoadedListener();
 
@@ -367,14 +367,14 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
     @Override
     public abstract ArchitectView.ArchitectWorldLoadedListener getWorldLoadedListener();
 
-    /**
+ /*   *//**
      * helper to check if video-drawables are supported by this device. recommended to check before launching ARchitect Worlds with videodrawables
      * @return true if AR.VideoDrawables are supported, false if fallback rendering would apply (= show video fullscreen)
-     */
+     *//*
     public static final boolean isVideoDrawablesSupported() {
         String extensions = GLES20.glGetString( GLES20.GL_EXTENSIONS );
         return extensions != null && extensions.contains( "GL_OES_EGL_image_external" );
-    }
+    }*/
 
   /*  protected void injectData() {
         if (!isLoading) {
