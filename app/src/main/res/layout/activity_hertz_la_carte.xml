@@ -16,30 +16,32 @@
         android:id="@+id/imageView"
         android:layout_width="275dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/hertzlacarte"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:cropToPadding="false"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/hertzlacarte"/>
 
     <ImageButton
         android:id="@+id/boosterSeat"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/boosterseat"
+        android:layout_alignStart="@+id/imageView"
         android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"/>
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/boosterseat"/>
 
     <ImageButton
         android:id="@+id/siriusRadio"
         android:layout_width="70dp"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/infantChildSeat"
         android:layout_marginBottom="24dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/sirius"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/infantChildSeat"/>
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/sirius"/>
 
     <ImageButton
         android:id="@+id/neverLost"
@@ -49,17 +51,17 @@
         android:layout_alignEnd="@+id/imageView"
         android:layout_marginEnd="37dp"
         android:cropToPadding="false"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/tablet"/>
 
     <ImageButton
         android:id="@+id/skiPackage"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ski"
         android:layout_alignTop="@+id/childSeat"
-        android:layout_toEndOf="@+id/checkLost"/>
+        android:layout_toEndOf="@+id/checkLost"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ski"/>
 
     <ImageButton
         android:id="@+id/childSeat"
@@ -68,18 +70,18 @@
         android:layout_alignStart="@+id/boosterSeat"
         android:layout_below="@+id/boosterSeat"
         android:layout_marginTop="32dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/childseat"/>
 
     <ImageButton
         android:id="@+id/infantChildSeat"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/infantchildseat"
-        android:layout_below="@+id/childSeat"
         android:layout_alignStart="@+id/childSeat"
-        android:layout_marginTop="38dp"/>
+        android:layout_below="@+id/childSeat"
+        android:layout_marginTop="38dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/infantchildseat"/>
 
     <ImageButton
         android:id="@+id/travelTablet"
@@ -87,7 +89,7 @@
         android:layout_height="60dp"
         android:layout_alignBottom="@+id/infantChildSeat"
         android:layout_alignStart="@+id/skiPackage"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/traveltab"/>
 
     <CheckBox
