@@ -7,4 +7,9 @@ public class FeatureView extends ARActivity {
     String getAssetPath() {
         return "FeatureView/index.html";
     }
+
+    @Override
+    void addPoiToAR(double lat, double lon, double alt) {
+
+    }
 }
