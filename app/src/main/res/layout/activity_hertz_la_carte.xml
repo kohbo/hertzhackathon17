@@ -15,51 +15,49 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="275dp"
-        android:layout_height="75dp"
+        android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:cropToPadding="false"
-        android:scaleType="fitCenter"
         app:srcCompat="@drawable/hertz"/>
 
     <ImageButton
         android:id="@+id/boosterSeat"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="69dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/boosterseat"
-        android:layout_marginTop="38dp"
         android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"/>
+        android:layout_toStartOf="@+id/imageView"/>
 
     <ImageButton
         android:id="@+id/siriusRadio"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignEnd="@+id/infantChildSeat"
+        android:layout_below="@+id/infantChildSeat"
+        android:layout_marginTop="42dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/sirius"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/infantChildSeat"/>
+        app:srcCompat="@drawable/sirius"/>
 
     <ImageButton
         android:id="@+id/neverLost"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/childSeat"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_marginEnd="37dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/tablet"/>
+        app:srcCompat="@drawable/tablet"
+        android:layout_alignBottom="@+id/checkLost"
+        android:layout_alignEnd="@+id/aLaCarte"/>
 
     <ImageButton
         android:id="@+id/skiPackage"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignTop="@+id/childSeat"
         android:layout_toEndOf="@+id/checkLost"
         android:scaleType="fitXY"
@@ -67,8 +65,8 @@
 
     <ImageButton
         android:id="@+id/childSeat"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignStart="@+id/boosterSeat"
         android:layout_below="@+id/boosterSeat"
         android:layout_marginTop="32dp"
@@ -77,8 +75,8 @@
 
     <ImageButton
         android:id="@+id/infantChildSeat"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignStart="@+id/childSeat"
         android:layout_below="@+id/childSeat"
         android:layout_marginTop="38dp"
@@ -87,8 +85,8 @@
 
     <ImageButton
         android:id="@+id/travelTablet"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignBottom="@+id/infantChildSeat"
         android:layout_alignStart="@+id/skiPackage"
         android:scaleType="fitXY"
@@ -155,9 +153,11 @@
 
     <Button
         android:id="@+id/aLaCarte"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignStart="@+id/travelTablet"
-        android:layout_alignTop="@+id/checkSirius"
-        android:text="Hertz La Carte"/>
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:text="Hertz La Carte"
+        android:layout_alignBaseline="@+id/checkSirius"
+        android:layout_alignBottom="@+id/checkSirius"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="39dp"/>
 </RelativeLayout>

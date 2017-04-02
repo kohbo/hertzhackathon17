@@ -45,7 +45,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton travTab = (ImageButton) findViewById(R.id.travelTablet);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        travTab.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
@@ -67,7 +67,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton skiPak = (ImageButton) findViewById(R.id.skiPackage);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        skiPak.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
@@ -87,7 +87,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton neverL = (ImageButton) findViewById(R.id.neverLost);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        neverL.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
@@ -107,7 +107,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton sirius = (ImageButton) findViewById(R.id.siriusRadio);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        sirius.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
@@ -131,7 +131,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton inChiSeat = (ImageButton) findViewById(R.id.infantChildSeat);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        inChiSeat.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
@@ -155,7 +155,7 @@ public class HertzLaCarte extends AppCompatActivity {
 
         ImageButton chiSeat = (ImageButton) findViewById(R.id.childSeat);
 
-        booster.setOnClickListener(new View.OnClickListener() {
+        chiSeat.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
 
