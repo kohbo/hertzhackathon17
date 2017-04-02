@@ -4,6 +4,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.SensorManager;
 import android.location.LocationListener;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -21,4 +26,8 @@ public class GuideActivity extends ARActivity {
     void addPoiToAR(double lat, double lon, double alt) {
 
     }
+
+
+
+
 }

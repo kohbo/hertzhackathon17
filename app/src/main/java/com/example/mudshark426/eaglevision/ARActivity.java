@@ -11,9 +11,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mudshark426.eaglevision.R;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 
@@ -28,6 +35,10 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     private ArchitectView architectView;
 
     protected boolean isLoading = false;
+    private SlidingUpPanelLayout slidingLayout;
+    private Button btnShow;
+    private Button btnHide;
+    private TextView textView;
 
     private String ARkey() {
         //String key = "pPRPYEu94bqvCrDihHUq42Dob1CNySsICF9gGbnEmxah3jGTy7l1UctEkyj0CFS7KgrHKSYq9iihedyj7dEjKVObozE01QQlbOh1bPklkN5huNylkNS2Ec0NGzYP8fmWJXkfSytsE628OMIJe6sr+XAS6pRbtVaDn2OloyWD1wFTYWx0ZWRfX40YS1TiJtIPOmVv7e1qa1MeNyARYukrmEifZjIkY9GDggJ+jocqxrZjnnwIyrKVbFEF+Eg97XLbT0e4VT45V/NEjRJTQAsCq1YvpCk2N/Z1znmVZM/VHwF7uBU6/RgFkRq7cUGnMImPlQ5fACMzCYlpxQm/XTywLPDrzDTVzkKw+dBSnTeWB1ZAdfeFC/YttlLxOfwQqZmEyYS64DNHzYvsw6GyMwCFPa6RZ8fObcn+a3bk5JcBtqSLJPgjJ0MxiZiWRg2fSOiyR42/uhy/MpvD1+BYpUkGR/cryK5KKSzffMBlLHGwevKlhO2L5//+M+qG57AavXNIPjhSFe9qhy1WURl6Nj274xUL0C3hGQ4zd/7GMl59CxboiJuZt3equpreeWxCHtBym61Hsz9dxr1hQtoXd7xq40KN/zHMSk7/hVMeFXg5Co3cn7YmA7G6P5YoedzeTqb8RiSEEkuj9p0gScPXZGT/XWbj6yiIr2GAeYmEODf4tdo=";
@@ -92,8 +103,86 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
         config.setLicenseKey(ARkey());
         this.architectView.onCreate(config);
+       btnShow = (Button)findViewById(R.id.btn_show);
+        btnHide = (Button)findViewById(R.id.btn_hide);
+     //   textView = (TextView)findViewById(R.id.text);
+        slidingLayout = (SlidingUpPanelLayout)findViewById(R.id.sliding_layout);
+
+        //some "demo" event
+        slidingLayout.setPanelSlideListener(onSlideListener());
+        btnHide.setOnClickListener(onHideListener());
+        btnShow.setOnClickListener(onShowListener());
+
+
     }
 
+/*
+
+    */
+/**
+     * Request show sliding layout when clicked
+     * @return
+     */
+
+    private View.OnClickListener onShowListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //show sliding layout in bottom of screen (not expand it)
+                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+               // btnShow.setVisibility(View.GONE);
+            }
+        };
+    }
+
+
+/*** Hide sliding layout when click button
+     * @return
+     */
+
+    private View.OnClickListener onHideListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //hide sliding layout
+                slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+               // btnShow.setVisibility(View.VISIBLE);
+            }
+        };
+    }
+
+    private SlidingUpPanelLayout.PanelSlideListener onSlideListener() {
+        return new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View view, float v) {
+//                textView.setText("panel is sliding");
+            }
+
+            @Override
+            public void onPanelCollapsed(View view) {
+
+                //textView.setText("panel Collapse");
+            }
+
+            @Override
+            public void onPanelExpanded(View view) {
+
+                //textView.setText("panel expand");
+            }
+
+            @Override
+            public void onPanelAnchored(View view) {
+
+                //textView.setText("panel anchored");
+            }
+
+            @Override
+            public void onPanelHidden(View view) {
+
+                //textView.setText("panel is Hidden");
+            }
+        };
+    }
     private boolean checkGPSPermission() {
         //Check for GeoPermissions
         return ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
