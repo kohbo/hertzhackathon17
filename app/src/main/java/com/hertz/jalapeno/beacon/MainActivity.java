@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchGuide(View view){
         Intent intent = new Intent(this, GuideActivity.class);
-        Log.v("DOIND","Starting guideact");
         startActivity(intent);
     }
 
