@@ -41,8 +41,8 @@ var World = {
 //		}
                     var refPoi = {
                         "id": 0,
-                        "latitude": 26.419498+ 0.05,
-                        "longitude": -81.810104 + 0.05,
+                        "latitude": 26.419498 - 0.05,
+                        "longitude": -81.810104 - 0.05,
                         "altitude": 20.0,
                         "title": "RefPoint",
                         "description": "RefPointDesc"
