@@ -1,11 +1,8 @@
 package com.hertz.jalapeno.beacon;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchAR(View view){
         Intent intent = new Intent(this, FeatureView.class);
+        startActivity(intent);
+    }
+
+    public void launchALC(View view){
+        Intent intent = new Intent(this, HertzLaCarte.class);
         startActivity(intent);
     }
 }

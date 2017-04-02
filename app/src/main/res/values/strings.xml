@@ -19,4 +19,5 @@
     <string name="footer">Sample App</string>
     <string name="btn_main_guide">Take me to my car</string>
     <string name="btn_main_featurear">FeatureAR</string>
+    <string name="btn_main_alacarte">Hertz-La-Carte</string>
 </resources>
