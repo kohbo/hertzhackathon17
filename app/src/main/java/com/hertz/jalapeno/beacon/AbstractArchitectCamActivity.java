@@ -241,7 +241,11 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
             try {
                this.architectView.load("file:///android_asset/06_PointOfInterest_2_PoiWithLabel/index.html");
               //  this.architectView.load("file:///android_asset/3dModels_3dModelAtGeoLocation/index.html");
+<<<<<<< HEAD
          //   this.architectView.load("file///android_asset/PoiAtLocation/index.html");
+=======
+            this.architectView.load("file///android_asset/3dModelO/index.html");
+>>>>>>> 86423fa73e92c5d1383fd684c3074c1cf9a6ba1b
 
             } catch (IOException e) {
                 e.printStackTrace();

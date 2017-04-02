@@ -17,4 +17,6 @@
     <string name="poi_id">ID</string>
     <string name="title_activity_sample1_poi_detail">Sample 5.1 POI Detail</string>
     <string name="footer">Sample App</string>
+    <string name="btn_main_guide">Take me to my car</string>
+    <string name="btn_main_featurear">FeatureAR</string>
 </resources>
