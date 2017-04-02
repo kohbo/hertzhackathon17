@@ -24,7 +24,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/BoosterSeat"
+        app:srcCompat="@drawable/boosterseat"
         android:layout_below="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
         android:layout_marginTop="63dp"
@@ -33,7 +33,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/Sirius"
+        app:srcCompat="@drawable/sirius"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/infantChildSeat"
         android:layout_marginBottom="32dp"
@@ -42,7 +42,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/Tablet"
+        app:srcCompat="@drawable/tablet"
         android:layout_above="@+id/childSeat"
         android:layout_alignEnd="@+id/imageView"
         android:layout_marginEnd="37dp"
@@ -59,7 +59,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/ChildSeat"
+        app:srcCompat="@drawable/childseat"
         android:layout_marginTop="62dp"
         android:id="@+id/childSeat"
         android:layout_below="@+id/boosterSeat"
@@ -68,7 +68,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/InfantChildSeat"
+        app:srcCompat="@drawable/infantchildseat"
         android:id="@+id/infantChildSeat"
         android:layout_below="@+id/childSeat"
         android:layout_alignStart="@+id/childSeat"
@@ -77,7 +77,7 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/TravelTab"
+        app:srcCompat="@drawable/traveltab"
         android:layout_alignBottom="@+id/infantChildSeat"
         android:layout_alignStart="@+id/skiPackage"
         android:id="@+id/travelTablet"/>
