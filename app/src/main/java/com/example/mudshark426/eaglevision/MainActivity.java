@@ -1,9 +1,11 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.hertz.jalapeno.beacon.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -7,12 +7,12 @@ var World = {
 	markerDrawable_idle: null,
 
 	// called to inject new POI data
-	//loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
 
 		/*
 			The example Image Recognition already explained how images are loaded and displayed in the augmented reality view. This sample loads an AR.ImageResource when the World variable was defined. It will be reused for each marker that we will create afterwards.
 		*/
-		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
+		World.markerDrawable_idle = new AR.ImageResource("assets/car_finder.png");
 
 		/*
 			For creating the marker a new object AR.GeoObject will be created at the specified geolocation. An AR.GeoObject connects one or more AR.GeoLocations with multiple AR.Drawables. The AR.Drawables can be defined for multiple targets. A target can be the camera, the radar or a direction indicator. Both the radar and direction indicators will be covered in more detail in later examples.
@@ -59,12 +59,12 @@ var World = {
 			// creates a poi object with a random location near the user's location
 			var poiData = {
 				"id": 1,
-				"longitude": (26.419474),
-				"latitude": (-81.810043),
+				"longitude": -81.810126,
+				"latitude": 26.419489,
 				"altitude": 10.0
 			};
 
-		World.loadPoisFromJsonData(poiData);
+		    World.loadPoisFromJsonData(poiData);
 			World.initiallyLoadedData = true;
 		}
 	},

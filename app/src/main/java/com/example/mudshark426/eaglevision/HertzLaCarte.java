@@ -1,11 +1,12 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.hertz.jalapeno.beacon.R;
 
 public class HertzLaCarte extends AppCompatActivity {
 

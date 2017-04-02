@@ -34,25 +34,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".GuideActivity"
+            android:name="com.example.mudshark426.eaglevision.GuideActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".FeatureView"
+            android:name="com.example.mudshark426.eaglevision.FeatureView"
             android:theme="@style/FullscreenTheme">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.mudshark426.eaglevision.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".HertzLaCarte">
+        <activity android:name="com.example.mudshark426.eaglevision.HertzLaCarte">
         </activity>
-        <activity android:name=".FeatureDetail">
+        <activity android:name="com.example.mudshark426.eaglevision.FeatureDetail">
         </activity>
     </application>
 

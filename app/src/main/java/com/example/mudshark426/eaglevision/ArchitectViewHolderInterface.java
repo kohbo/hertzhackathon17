@@ -1,4 +1,4 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
 import android.location.LocationListener;
 

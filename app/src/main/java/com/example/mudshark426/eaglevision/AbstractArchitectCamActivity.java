@@ -1,35 +1,18 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.*;
-import android.Manifest;
 import android.annotation.SuppressLint;
 
 import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.location.Location;
 
 import android.location.LocationListener;
-import android.opengl.GLES20;
 import android.os.Bundle;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
-
-
 
 
 import com.wikitude.architect.ArchitectView;
@@ -107,7 +90,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		}*/
 
 		/* set AR-view for life-cycle notifications etc. */
-        this.architectView = (ArchitectView)this.findViewById(R.id.architectView);
+        this.architectView = (ArchitectView)this.findViewById(com.hertz.jalapeno.beacon.R.id.architectView);
 
 		/* pass SDK key if you have one, this one is only valid for this package identifier and must not be used somewhere else */
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();

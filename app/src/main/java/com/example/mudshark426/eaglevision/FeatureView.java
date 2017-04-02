@@ -1,4 +1,6 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
+
+import com.example.mudshark426.eaglevision.ARActivity;
 
 public class FeatureView extends ARActivity {
     private final String TAG = "ARView";

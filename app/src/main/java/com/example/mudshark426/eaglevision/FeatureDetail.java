@@ -1,11 +1,12 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.hertz.jalapeno.beacon.FeatureDatabase.Detail;
+
+import com.hertz.jalapeno.beacon.R;
 
 public class FeatureDetail extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class FeatureDetail extends AppCompatActivity {
         String feature = extras.getString("name");
 
         FeatureDatabase db = new FeatureDatabase(this);
-        Detail detail = db.getDetails(feature);
+        FeatureDatabase.Detail detail = db.getDetails(feature);
 
         TextView name = (TextView) findViewById(R.id.nameText);
 

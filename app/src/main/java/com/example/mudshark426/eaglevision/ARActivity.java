@@ -1,6 +1,5 @@
-package com.hertz.jalapeno.beacon;
+package com.example.mudshark426.eaglevision;
 
-import android.*;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -14,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.hertz.jalapeno.beacon.R;
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
 
@@ -30,7 +30,8 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     protected boolean isLoading = false;
 
     private String ARkey() {
-        String key = "pPRPYEu94bqvCrDihHUq42Dob1CNySsICF9gGbnEmxah3jGTy7l1UctEkyj0CFS7KgrHKSYq9iihedyj7dEjKVObozE01QQlbOh1bPklkN5huNylkNS2Ec0NGzYP8fmWJXkfSytsE628OMIJe6sr+XAS6pRbtVaDn2OloyWD1wFTYWx0ZWRfX40YS1TiJtIPOmVv7e1qa1MeNyARYukrmEifZjIkY9GDggJ+jocqxrZjnnwIyrKVbFEF+Eg97XLbT0e4VT45V/NEjRJTQAsCq1YvpCk2N/Z1znmVZM/VHwF7uBU6/RgFkRq7cUGnMImPlQ5fACMzCYlpxQm/XTywLPDrzDTVzkKw+dBSnTeWB1ZAdfeFC/YttlLxOfwQqZmEyYS64DNHzYvsw6GyMwCFPa6RZ8fObcn+a3bk5JcBtqSLJPgjJ0MxiZiWRg2fSOiyR42/uhy/MpvD1+BYpUkGR/cryK5KKSzffMBlLHGwevKlhO2L5//+M+qG57AavXNIPjhSFe9qhy1WURl6Nj274xUL0C3hGQ4zd/7GMl59CxboiJuZt3equpreeWxCHtBym61Hsz9dxr1hQtoXd7xq40KN/zHMSk7/hVMeFXg5Co3cn7YmA7G6P5YoedzeTqb8RiSEEkuj9p0gScPXZGT/XWbj6yiIr2GAeYmEODf4tdo=";
+        //String key = "pPRPYEu94bqvCrDihHUq42Dob1CNySsICF9gGbnEmxah3jGTy7l1UctEkyj0CFS7KgrHKSYq9iihedyj7dEjKVObozE01QQlbOh1bPklkN5huNylkNS2Ec0NGzYP8fmWJXkfSytsE628OMIJe6sr+XAS6pRbtVaDn2OloyWD1wFTYWx0ZWRfX40YS1TiJtIPOmVv7e1qa1MeNyARYukrmEifZjIkY9GDggJ+jocqxrZjnnwIyrKVbFEF+Eg97XLbT0e4VT45V/NEjRJTQAsCq1YvpCk2N/Z1znmVZM/VHwF7uBU6/RgFkRq7cUGnMImPlQ5fACMzCYlpxQm/XTywLPDrzDTVzkKw+dBSnTeWB1ZAdfeFC/YttlLxOfwQqZmEyYS64DNHzYvsw6GyMwCFPa6RZ8fObcn+a3bk5JcBtqSLJPgjJ0MxiZiWRg2fSOiyR42/uhy/MpvD1+BYpUkGR/cryK5KKSzffMBlLHGwevKlhO2L5//+M+qG57AavXNIPjhSFe9qhy1WURl6Nj274xUL0C3hGQ4zd/7GMl59CxboiJuZt3equpreeWxCHtBym61Hsz9dxr1hQtoXd7xq40KN/zHMSk7/hVMeFXg5Co3cn7YmA7G6P5YoedzeTqb8RiSEEkuj9p0gScPXZGT/XWbj6yiIr2GAeYmEODf4tdo=";
+        String key = "RXZjZD1NqqovELEtLkhqf9Gmv9GX+JATINUdDQMQyioXbEtpR6yoO8y2ET1UO9kKyhFGENiK04OhlGbwsVjlytBcBKPR+WqjEBCwcjYhmr5qHZEn9q0uUUn8SlaLQLd8M938yo/HhcrQSN60UwlXtXw1w0OxAH/kFphMO7UqCE9TYWx0ZWRfXxPuHj22gDMU7w5hx5+5XPL5wSFyzj2B4wWZPR0EPF+O/+9bT5LmXX3Vxp0zHNlNtzr11SACtcW499QHXnwa6rs22t1Yn/1W394v2hseZSARlKqU30wHfu+VbmQz1rMc2Dhv+blIqD1GdvNE521a0TZZWJbBnVS42TGX2JrIpVCFYEZSaLFUJiUPNN2q5TUgXE8YvqpRAKH2yyem6J5rOxMh3jqCymg6Cx825cTaTqicp3HLHPcptlgu4FUKErR8uIshYcb6fxtns2JeM5VGKnoYuSwwZ/u1FRXSjUAuX0qaEIoAVFew/UauSleQIvc2AqZ4onxSuNjNbM+fzgLPq+D64QST9UVM8+YrqczVK0Z6ZAXrs6+tCZBjm7a5WYdPqnLciOH4L4ETGVEWvjF6kkpy9KCFs0ifOwuh0Nruaafur/dly/0i0/cW/b0Tou5d9TojUWXVNCDXJFO09qoahkLFbKGvBWuvQyURugFMFoQ3SWFx3gmHuLdQMyGm8ANoY1k1klfj+x2CZGEl4k3zxyvAIELZwG1Jsq8bBXrO+rm91aHWG2Aid0aHFTaqvAGB3ZtRi6ZsNlzY6CqPLo1Z/0eIckZ/E5GsoQ==";
         return key;
     }
 
@@ -68,7 +69,7 @@ public abstract class ARActivity extends AppCompatActivity implements ArchitectV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(com.hertz.jalapeno.beacon.R.layout.activity_fullscreen);
 
         //Check for permissions
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
