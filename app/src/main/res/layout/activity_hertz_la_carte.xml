@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/hertzlacarte"/>
+        app:srcCompat="@drawable/hertzalacarte"/>
 
     <ImageButton
         android:id="@+id/boosterSeat"
