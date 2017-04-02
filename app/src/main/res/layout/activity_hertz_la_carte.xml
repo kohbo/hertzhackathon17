@@ -13,74 +13,83 @@
     tools:context="com.hertz.jalapeno.beacon.HertzLaCarte">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/hertz"
+        android:id="@+id/imageView"
+        android:layout_width="275dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/hertzlacarte"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:id="@+id/imageView"/>
+        android:layout_centerHorizontal="true"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/boosterSeat"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/boosterseat"
         android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_marginTop="63dp"
-        android:id="@+id/boosterSeat"/>
+        android:layout_alignStart="@+id/imageView"/>
 
     <ImageButton
-        android:layout_width="50dp"
+        android:id="@+id/siriusRadio"
+        android:layout_width="70dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/sirius"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/infantChildSeat"
-        android:layout_marginBottom="32dp"
-        android:id="@+id/siriusRadio"/>
+        android:layout_alignStart="@+id/infantChildSeat"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/tablet"
+        android:id="@+id/neverLost"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_above="@+id/childSeat"
         android:layout_alignEnd="@+id/imageView"
         android:layout_marginEnd="37dp"
-        android:id="@+id/neverLost"/>
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/tablet"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ski"
         android:id="@+id/skiPackage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ski"
         android:layout_alignTop="@+id/childSeat"
-        android:layout_alignStart="@+id/neverLost"/>
+        android:layout_toEndOf="@+id/checkLost"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/childseat"
-        android:layout_marginTop="62dp"
         android:id="@+id/childSeat"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignStart="@+id/boosterSeat"
         android:layout_below="@+id/boosterSeat"
-        android:layout_alignStart="@+id/boosterSeat"/>
+        android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/childseat"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/infantchildseat"
         android:id="@+id/infantChildSeat"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/infantchildseat"
         android:layout_below="@+id/childSeat"
         android:layout_alignStart="@+id/childSeat"
-        android:layout_marginTop="57dp"/>
+        android:layout_marginTop="38dp"/>
 
     <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/traveltab"
+        android:id="@+id/travelTablet"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignBottom="@+id/infantChildSeat"
         android:layout_alignStart="@+id/skiPackage"
-        android:id="@+id/travelTablet"/>
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/traveltab"/>
 
     <CheckBox
         android:text="CheckBox"
@@ -142,10 +151,10 @@
         android:id="@+id/checkTravelTab"/>
 
     <Button
-        android:text="Button"
-        android:layout_width="50dp"
+        android:id="@+id/aLaCarte"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/siriusRadio"
-        android:layout_toStartOf="@+id/travelTablet"
-        android:id="@+id/button"/>
+        android:layout_alignStart="@+id/travelTablet"
+        android:layout_alignTop="@+id/checkSirius"
+        android:text="Hertz La Carte"/>
 </RelativeLayout>
