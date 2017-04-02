@@ -15,33 +15,35 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="275dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_height="75dp"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/hertzalacarte"/>
+        app:srcCompat="@drawable/hertzalacarte"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"/>
 
     <ImageButton
         android:id="@+id/boosterSeat"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_below="@+id/imageView"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/boosterseat"/>
+        app:srcCompat="@drawable/boosterseat"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"/>
 
     <ImageButton
         android:id="@+id/siriusRadio"
         android:layout_width="70dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/infantChildSeat"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="10dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/sirius"/>
+        app:srcCompat="@drawable/sirius"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/infantChildSeat"/>
 
     <ImageButton
         android:id="@+id/neverLost"
