@@ -39,6 +39,10 @@
             android:label="@string/app_name"
             android:theme="@style/FullscreenTheme">
         </activity>
+        <activity
+            android:name=".FeatureView"
+            android:theme="@style/FullscreenTheme">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
