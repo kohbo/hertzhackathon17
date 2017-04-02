@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FeatureView.class);
         startActivity(intent);
     }
+
+    public void launchAR(View view){
+        Intent intent = new Intent(this, GuideActivity.class);
+        startActivity(intent);
+    }
 }
