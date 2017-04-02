@@ -14,12 +14,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchGuide(View view){
-        Intent intent = new Intent(this, FeatureView.class);
+        Intent intent = new Intent(this, GuideActivity.class);
         startActivity(intent);
     }
 
     public void launchAR(View view){
-        Intent intent = new Intent(this, GuideActivity.class);
+        Intent intent = new Intent(this, FeatureView.class);
         startActivity(intent);
     }
 }

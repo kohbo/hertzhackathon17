@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.estimote.sdk.SystemRequirementsChecker;
+
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.common.camera.CameraSettings;
 
@@ -21,8 +21,6 @@ import java.io.FileOutputStream;
  * status bar and navigation/system bar) with user interaction.
  */
 public class FeatureView extends AbstractArchitectCamActivity {
-
-    private ArchitectView architectView;
     private long lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
     private static final int WIKITUDE_PERMISSIONS_REQUEST_EXTERNAL_STORAGE = 3;
     protected Bitmap screenCapture = null;
@@ -77,31 +75,6 @@ public class FeatureView extends AbstractArchitectCamActivity {
     }
 
 
-  /*  @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        architectView.onPostCreate();
-//
-//        try {
-//            this.architectView.load("file:///android_asset/06_PointOfInterest_3_MultiplePois/index.html");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        architectView.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        architectView.onDestroy();
-    }
-*/
 
     @Override
     public String getARchitectWorldPath() {
@@ -178,15 +151,4 @@ public class FeatureView extends AbstractArchitectCamActivity {
         }
     }
 
-   /* @Override
-    protected void onPause() {
-        super.onPause();
-        architectView.onPause();
-    }*/
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SystemRequirementsChecker.checkWithDefaultDialogs(this);
-    }
 }

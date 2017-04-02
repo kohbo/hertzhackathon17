@@ -71,17 +71,12 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
      */
     protected LocationListener locationListener;
 
-    /**
-     * urlListener handling "document.location= 'architectsdk://...' " calls in JavaScript"
-     */
-    protected ArchitectView.ArchitectUrlListener urlListener;
 
     /**
      * worldLoadedListener receives calls when the AR world is finished loading or when it failed to laod.
      */
     protected ArchitectView.ArchitectWorldLoadedListener worldLoadedListener;
 
-    protected Location poiData;
 
     protected boolean isLoading = false;
 
@@ -142,13 +137,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
         // set accuracy listener if implemented, you may e.g. show calibration prompt for compass using this listener
         this.sensorAccuracyListener = this.getSensorAccuracyListener();
 
-		/*// set urlListener, any calls made in JS like "document.location = 'architectsdk://foo?bar=123'" is forwarded to this listener, use this to interact between JS and native Android activity/fragment
-		this.urlListener = this.getUrlListener();*/
-
-		/*// register valid urlListener in architectView, ensure this is set before content is loaded to not miss any event
-		if (this.urlListener != null && this.architectView != null) {
-			this.architectView.registerUrlListener( this.getUrlListener() );
-		}*/
 
         if (hasGeo()) {
 
@@ -197,12 +185,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
         }
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        // listener passed over to locationProvider, any location update is handled here
 
-    }
 
     protected abstract CameraSettings.CameraPosition getCameraPosition();
 
@@ -289,16 +272,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
     }
 
     @Override
-    protected void onStart() {
-
-        super.onStart();
-
-    }
-
-    @Override
     protected void onStop() {
-
-
         super.onStop();
     }
 
