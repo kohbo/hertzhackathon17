@@ -5,12 +5,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mudshark426.eaglevision.MainActivity"
-    android:orientation="vertical">
+    tools:context="com.example.mudshark426.eaglevision.MainActivity">
 
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -18,25 +20,30 @@
         app:srcCompat="@drawable/hertz" />
 
     <android.support.v7.widget.AppCompatButton
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/HertzYellow"
+        android:onClick="launchGuide"
         android:text="@string/btn_main_guide"
-        android:onClick="launchGuide">
-        </android.support.v7.widget.AppCompatButton>
+        android:textColor="@color/colorPrimaryDark"></android.support.v7.widget.AppCompatButton>
 
     <android.support.v7.widget.AppCompatButton
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/HertzYellow"
+        android:onClick="launchAR"
         android:text="@string/btn_main_featurear"
-        android:onClick="launchAR">
-    </android.support.v7.widget.AppCompatButton>
+        android:textColor="@color/colorPrimaryDark"></android.support.v7.widget.AppCompatButton>
 
     <android.support.v7.widget.AppCompatButton
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="60dp"
+        android:background="@color/HertzYellow"
+        android:onClick="launchALC"
         android:text="@string/btn_main_alacarte"
-        android:onClick="launchALC">
-    </android.support.v7.widget.AppCompatButton>
+        android:textColor="@color/colorPrimaryDark"></android.support.v7.widget.AppCompatButton>
 
 
 </android.support.v7.widget.LinearLayoutCompat>

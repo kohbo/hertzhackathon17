@@ -14,7 +14,7 @@ var World = {
 	currentMarker: null,
 
 	// called to inject new POI data
-	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+	addAllPois: function() {
 		// empty list of visible markers
 		World.markerList = [];
 
@@ -22,33 +22,10 @@ var World = {
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 
-		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
-//		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
-//			var singlePoi = {
-//				"id": poiData[currentPlaceNr].id,
-//				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
-//				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-//				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-//				"title": poiData[currentPlaceNr].name,
-//				"description": poiData[currentPlaceNr].description
-//			};
-//
-//			/*
-//				To be able to deselect a marker while the user taps on the empty screen,
-//				the World object holds an array that contains each marker.
-//			*/
-//			World.markerList.push(new Marker(singlePoi));
-//		}
-                    var refPoi = {
-                        "id": 0,
-                        "latitude": 26.419498 - 0.05,
-                        "longitude": -81.810104 - 0.05,
-                        "altitude": 20.0,
-                        "title": "RefPoint",
-                        "description": "RefPointDesc"
-                    };
+        World.addPoi(0.044, 0.065, 0, "", "Climate Ctrl");
+        World.addPoi(0.048,0.055, 0, "", "Bluetooth");
+        World.addPoi(0.052, 0.045, 0, "", "Headlights");
 
-                    World.markerList.push(new Marker(refPoi));
 		World.updateStatusMessage('places loaded');
 	},
 
@@ -77,7 +54,7 @@ var World = {
 			/* 
 				requestDataFromLocal with the geo information as parameters (latitude, longitude) creates different poi data to a random location in the user's vicinity.
 			*/
-			World.requestDataFromLocal(lat, lon);
+			World.addAllPois(lat, lon);
 			World.initiallyLoadedData = true;
 		}
 	},
@@ -105,23 +82,20 @@ var World = {
 		}
 	},
 
-	// request POI data
-	requestDataFromLocal: function requestDataFromLocalFn(centerPointLatitude, centerPointLongitude) {
-		var poisToCreate = 20;
-		var poiData = [];
-
-		for (var i = 0; i < poisToCreate; i++) {
-			poiData.push({
-				"id": (i + 1),
-				"longitude": (centerPointLongitude + (Math.random() / 5 - 0.1)),
-				"latitude": (centerPointLatitude + (Math.random() / 5 - 0.1)),
-				"description": ("This is the description of POI#" + (i + 1)),
-				"altitude": "100.0",
-				"name": ("POI#" + (i + 1))
-			});
-		}
-		World.loadPoisFromJsonData(poiData);
+	addPoi: function(lat, lon, alt, tit, desc){
+	    var refPoi = {
+                    "id": 0,
+                    "latitude": 26.419498 - lat,
+                    "longitude": -81.810104 - lon,
+                    "altitude": 10.0 + alt,
+                    "title": tit,
+                    "description": desc
+        };
+        var refPoiMarker = new Marker(refPoi);
+        World.markerList.push(refPoiMarker);
 	}
+
+
 };
 
 /* 

@@ -43,7 +43,8 @@
             android:name="com.example.mudshark426.eaglevision.FeatureView"
             android:theme="@style/FullscreenTheme">
         </activity>
-        <activity android:name="com.example.mudshark426.eaglevision.MainActivity">
+        <activity android:name="com.example.mudshark426.eaglevision.MainActivity"
+            android:theme="@style/Theme.AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

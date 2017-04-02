@@ -1,6 +1,6 @@
 package com.example.mudshark426.eaglevision;
 
-import com.example.mudshark426.eaglevision.ARActivity;
+import android.os.Bundle;
 
 public class FeatureView extends ARActivity {
     private final String TAG = "ARView";
@@ -13,5 +13,17 @@ public class FeatureView extends ARActivity {
     @Override
     void addPoiToAR(double lat, double lon, double alt) {
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        getActionBar().hide();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        getActionBar().show();
     }
 }
