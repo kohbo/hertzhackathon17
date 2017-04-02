@@ -1,6 +1,6 @@
 // implementation of AR-Experience (aka "World")
 var World = {
-	// true once data was fetched
+    // true once data was fetched
 	initiallyLoadedData: false,
 
 	// different POI-Marker assets
@@ -23,24 +23,33 @@ var World = {
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
-		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
-			var singlePoi = {
-				"id": poiData[currentPlaceNr].id,
-				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
-				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
-				"title": poiData[currentPlaceNr].name,
-				"description": poiData[currentPlaceNr].description
-			};
+//		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
+//			var singlePoi = {
+//				"id": poiData[currentPlaceNr].id,
+//				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
+//				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
+//				"altitude": parseFloat(poiData[currentPlaceNr].altitude),
+//				"title": poiData[currentPlaceNr].name,
+//				"description": poiData[currentPlaceNr].description
+//			};
+//
+//			/*
+//				To be able to deselect a marker while the user taps on the empty screen,
+//				the World object holds an array that contains each marker.
+//			*/
+//			World.markerList.push(new Marker(singlePoi));
+//		}
+                    var refPoi = {
+                        "id": 0,
+                        "latitude": 26.419498+ 0.05,
+                        "longitude": -81.810104 + 0.05,
+                        "altitude": 20.0,
+                        "title": "RefPoint",
+                        "description": "RefPointDesc"
+                    };
 
-			/*
-				To be able to deselect a marker while the user taps on the empty screen, 
-				the World object holds an array that contains each marker.
-			*/
-			World.markerList.push(new Marker(singlePoi));
-		}
-
-		World.updateStatusMessage(currentPlaceNr + ' places loaded');
+                    World.markerList.push(new Marker(refPoi));
+		World.updateStatusMessage('places loaded');
 	},
 
 	// updates status message shon in small "i"-button aligned bottom center
@@ -113,7 +122,6 @@ var World = {
 		}
 		World.loadPoisFromJsonData(poiData);
 	}
-
 };
 
 /* 
