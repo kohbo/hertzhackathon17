@@ -8,3 +8,6 @@
 /captures
 .externalNativeBuild
 .idea/
+*.mp4
+ss/
+Presentation.pptx
